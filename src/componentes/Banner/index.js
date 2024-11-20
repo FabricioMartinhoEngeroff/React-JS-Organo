@@ -1,2 +1,2 @@
-import { Banner } from "./banner";
+import { Banner } from "./Banner";
 export default Banner;
