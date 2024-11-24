@@ -5,19 +5,6 @@ import "./Formulario.css";
 import { useState } from "react";
 
 const Formulario = (props) => {
-  const cargos = [
-    "Diretor Geral",
-    "Gerente de Qualidade",
-    "Gerente de Logística",
-    "Gerente de Vendas e Marketing",
-    "Engenheiro de Alimentos",
-    "Técnico em Laticínios",
-    "Supervisor de Produção",
-    "Analista de Marketing",
-    "Operador de Produção",
-    "Representante Comercial",
-  ];
-
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
   const [telefone, setTelefone] = useState("");
@@ -26,7 +13,7 @@ const Formulario = (props) => {
 
   const aoSalvar = (evento) => {
     evento.preventDefault();
-    props.colaboradorCadastrado({nome, cargo, telefone, email, endereco });
+    props.colaboradorCadastrado({ nome, cargo, telefone, email, endereco });
   };
 
   return (
@@ -39,7 +26,7 @@ const Formulario = (props) => {
           label="Nome"
           placeholder="Digite seu nome"
           valor={nome}
-          aoAlterado={(valor) => setNome(valor)} 
+          aoAlterado={(valor) => setNome(valor)}
         />
 
         <CampoTexto
@@ -47,14 +34,14 @@ const Formulario = (props) => {
           label="Função"
           placeholder="Digite sua função na empresa"
           valor={cargo}
-          aoAlterado={(valor) => setCargo(valor)} 
+          aoAlterado={(valor) => setCargo(valor)}
         />
 
         <CampoTexto
           label="Telefone"
           placeholder="Digite seu telefone"
           valor={telefone}
-          aoAlterado={(valor) => setTelefone(valor)} 
+          aoAlterado={(valor) => setTelefone(valor)}
         />
 
         <CampoTexto
@@ -68,15 +55,15 @@ const Formulario = (props) => {
           label="Endereço"
           placeholder="Digite seu endereço, cidade e estado"
           valor={endereco}
-          aoAlterado={(valor) => setEndereco(valor)} 
+          aoAlterado={(valor) => setEndereco(valor)}
         />
 
         <ListaSuspensa
           obrigatorio={true}
           label="Selecione seu Cargo"
-          itens={cargos}
+          itens={props.cargo}
           valor={cargo}
-          aoAlterado={(valor) => setCargo(valor)} 
+          aoAlterado={(valor) => setCargo(valor)}
         />
 
         <Botao>Criar Card</Botao>
