@@ -1,62 +1,68 @@
-import React, { useState } from "react";
-import Banner from "./componentes/Banner";
-import Formulario from "./componentes/Formulario";
-import Cargo from "./componentes/Cargo";
+import { useState } from 'react';
+import Banner from './componentes/Banner';
+import Formulario from './componentes/Formulario';
+import Time from './componentes/Time';
 
 function App() {
-  const cargos = [
-    {
-      nome: "Gerente de Qualidade",
-      corPrimaria: "#82CFFA",
-      corSecundaria: "#E8F8FF",
-    },
-    {
-      nome: "Analista de Marketing",
-      corPrimaria: "#A6D157",
-      corSecundaria: "#F0F8E2",
-    },
-    {
-      nome: "Operador de Produção",
-      corPrimaria: "#E06B69",
-      corSecundaria: "#FDE7E8",
-    },
-    {
-      nome: "Representante Comercial",
-      corPrimaria: "#D86EBF",
-      corSecundaria: "#FAE5F5",
-    },
-    {
-      nome: "Inovação e Gestão",
-      corPrimaria: "#FF8A29",
-      corSecundaria: "#FFEEDF",
-    },
-  ];
 
-  const [colaboradores, setColaboradores] = useState([]);
+  const times = [
+    {
+      nome: 'Programação',
+      corPrimaria: '#57C278',
+      corSecundaria: '#D9F7E9'
+    },
+    {
+      nome: 'Front-End',
+      corPrimaria: '#82CFFA',
+      corSecundaria: '#E8F8FF'
+    },
+    {
+      nome: 'Data Science',
+      corPrimaria: '#A6D157',
+      corSecundaria: '#F0F8E2'
+    },
+    {
+      nome: 'Devops',
+      corPrimaria: '#E06B69',
+      corSecundaria: '#FDE7E8'
+    },
+    {
+      nome: 'UX e Design',
+      corPrimaria: '#DB6EBF',
+      corSecundaria: '#FAE9F5'
+    },
+    {
+      nome: 'Mobile',
+      corPrimaria: '#FFBA05',
+      corSecundaria: '#FFF5D9'
+    },
+    {
+      nome: 'Inovação e Gestão',
+      corPrimaria: '#FF8A29',
+      corSecundaria: '#FFEEDF'
+    }
+  ]
+
+  const [colaboradores, setColaboradores] = useState([])
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
-    console.log(colaborador);
-    setColaboradores([...colaboradores, colaborador]);
-  };
+    debugger
+    setColaboradores([...colaboradores, colaborador])
+  }
 
   return (
     <div className="App">
       <Banner />
-      <Formulario
-        cargos={cargos.map((cargo) => cargo.nome)}
-        aoColaboradorCadastrado={(colaborador) =>
-          aoNovoColaboradorAdicionado(colaborador)
-        }
-      />
+      <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
 
-      {cargos.map((cargo, index) => (
-        <Cargo
-          key={index}
-          nome={cargo.nome}
-          corPrimaria={cargo.corPrimaria}
-          corSecundaria={cargo.corSecundaria}
-        />
-      ))}
+      {times.map(time => <Time 
+        key={time.nome} 
+        nome={time.nome} 
+        corPrimaria={time.corPrimaria} 
+        corSecundaria={time.corSecundaria} 
+        colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+      />)}   
+
     </div>
   );
 }
