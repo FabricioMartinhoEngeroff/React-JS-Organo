@@ -1,6 +1,11 @@
 import './Botao.css';
+import React, { type ReactElement } from 'react';
 
-const Botao = (props)=> {
+interface BotaoProps{
+    children: ReactElement;
+}
+
+const Botao = (props:BotaoProps)=> {
     return(
         <button className='botao'>
             {props.children}
