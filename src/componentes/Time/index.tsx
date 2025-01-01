@@ -1,6 +1,6 @@
 
 
-import type { IColaborador } from '../../compartilhado/interface/IColaborador'
+import type { IColaborador } from '../../compartilhado/interfaces/IColaborador'
 import Colaborador from '../Colaborador'
 import './Time.css'
 
